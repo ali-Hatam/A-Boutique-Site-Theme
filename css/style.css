@@ -718,8 +718,8 @@ hr {
 
 .products-item {
     position: relative;
-    /* opacity: 0;
-  top: 200px; */
+    opacity: 0;
+    top: 200px;
     width: 27%;
     -webkit-transition: all 1s ease-out;
     -moz-transition: all 1s ease-out;
