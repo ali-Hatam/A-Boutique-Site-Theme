@@ -531,28 +531,28 @@ hr {
 .slider img:nth-child(2) {
     top: 42%;
     right: 67%;
-    transform: translateZ(100px) scaleX(1.5) scaleY(1.5);
+    transform: scaleX(1.5) scaleY(1.5);
     transform-style: preserve-3d;
 }
 
 .slider img:nth-child(3) {
     top: 34%;
     right: 39%;
-    transform: translateZ(200px) scaleX(2) scaleY(2);
+    transform: scaleX(2) scaleY(2);
     transform-style: preserve-3d;
 }
 
 .slider img:nth-child(4) {
     top: 33%;
     right: 15%;
-    transform: translateZ(300px) scaleX(2.5) scaleY(2.5);
+    transform: scaleX(2.5) scaleY(2.5);
     transform-style: preserve-3d;
 }
 
 .slider img:nth-child(5) {
     top: 36%;
     right: 47%;
-    transform: translateZ(400px) scaleX(3) scaleY(3);
+    transform: scaleX(3) scaleY(3);
     transform-style: preserve-3d;
 }
 

@@ -72,6 +72,7 @@ function AppInitializer() {
     sliderCounter = 1;
     count50 = 1;
     isSelect1 = false;
+    isSelect2 = false;
     isDisplaySearchBoxRun = false;
     isShowShop1 = false;
     isShowShop2 = false;
@@ -110,7 +111,6 @@ function moveSlides() {
 
     if (counter <= iter) {
         for (let index = 0; index <= 4; index++) {
-            currntDeltaZ = previousDeltaZ[imgIndex] + (translateZ[index] / divid) * m;
 
             currentDeltaScaleX =
                 previousDeltaScaleX[imgIndex] + (scaleX[index] / divid) * m;
@@ -132,7 +132,6 @@ function moveSlides() {
 
             totImg[imgIndex].style.right = `${currentDeltaRight}%`;
 
-            previousDeltaZ[imgIndex] = currntDeltaZ;
             previousDeltaScaleX[imgIndex] = currentDeltaScaleX;
             previousDeltaScaleY[imgIndex] = currentDeltaScaleY;
             previousDeltaTop[imgIndex] = currentDeltaTop;
