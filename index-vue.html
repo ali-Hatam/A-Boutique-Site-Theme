@@ -11,198 +11,127 @@
 </head>
 
 <body>
-    <div class="cover"></div>
+    <div class="cover"
+        :style="{backgroundColor: coverBackColor, visibility: coverVisibility, opacity: coverOpacity, height: coverHeight}">
+    </div>
+
     <div class="header-title">
         <p class="header-parag">فروشگاه مجازی بوتیک من | پوشاک مردانه</p>
     </div>
 
     <div class="header-section">
+
         <div class="header-menu">
             <div class="menu-container">
                 <div class="menu-container-item">
-                    <div class="menu-right-item">
-                        <a class="menu-right-link" href="#">خانه</a>
-                    </div>
-                    <div class="menu-right-item">
-                        <a class="menu-right-link" href="#" onmouseover="showSubMenu(this)" onmouseleave="hiddenSubMenu(this,event)">فروشگاه ها</a
-              >
+                    <div v-for="(item, index) in menuItems" :key="item.id" class="menu-right-item">
+                        <a class="menu-right-link" :href="item.itemUrl"
+                            @mouseover="item.sub == true ? showSubMenu(item.id) : '' "
+                            @mouseleave="item.sub == true ? hiddenSubMenu($event,item.id) : '' ">
+                            {{ item.text }}
+                        </a>
 
-              <div class="pointer" onmouseover="showSubMenu(this)"></div>
+                        <div v-if="item.sub == true" class="pointer" :ref="`pointer_${item.id}`"
+                            @mouseover="showSubMenu(item.id)"></div>
 
-              <div class="stores" onmouseleave="hiddenSubMenu(this,event)">
-                <div class="stores-item">
-                  <a class="stores-link" href="./coolShirt.html"
-                    ><h2>پوشاک بهاره و تابستانه</h2></a
-                  >
-                </div>
-                <div class="stores-item">
-                  <a class="stores-link" href="./coolShirt.html"
-                    ><h2>پوشاک پاییزه و زمستانه</h2></a
-                  >
-                </div>
-                <div class="stores-item">
-                  <a class="stores-link" href="./coolShirt.html"
-                    ><h2>جلیقه</h2></a
-                  >
-                </div>
-                <div class="stores-item">
-                  <a class="stores-link" href="./coolShirt.html"
-                    ><h2>شلوار</h2></a
-                  >
-                </div>
-                <div class="stores-item">
-                  <a class="stores-link" href="./coolShirt.html"
-                    ><h2>کفش</h2></a
-                  >
-                </div>
-              </div>
-            </div>
-            <div class="menu-right-item">
-              <a
-                class="menu-right-link"
-                href="#"
-                onmouseover="showSubMenu(this)"
-                onmouseleave="hiddenSubMenu(this,event)"
-                >تخفیف ها</a
-              >
+                        <div v-if="item.sub == true" :class="item.store=='main' ? 'stores' : `stores second-stores`"
+                            @mouseleave=hiddenSubMenu($event,item.id) :ref="`store_${item.id}`">
+                            <div v-if="item.store == 'main'" v-for="storeItem in stores" :key="storeItem.id"
+                                class="stores-item">
+                                <a :href="storeItem.url" class="stores-link">
+                                    <h2>{{ storeItem.text }}</h2>
+                                </a>
+                            </div>
 
-              <div class="pointer" onmouseover="showSubMenu(this)"></div>
-
-              <div
-                class="stores second-stores"
-                onmouseleave="hiddenSubMenu(this,event)"
-              >
-                <div class="stores-item">
-                  <a class="stores-link" href="./coolShirt.html"
-                    ><h2>تخفیف های پوشاک بهاره و تابستانه</h2></a
-                  >
-                </div>
-                <div class="stores-item">
-                  <a class="stores-link" href="./coolShirt.html"
-                    ><h2>تخفیف های پوشاک پاییزه و زمستانه</h2></a
-                  >
-                </div>
-                <div class="stores-item">
-                  <a class="stores-link" href="./coolShirt.html"
-                    ><h2>تخفیف های جلیقه</h2></a
-                  >
-                </div>
-                <div class="stores-item">
-                  <a class="stores-link" href="./coolShirt.html"
-                    ><h2>تخفیف های شلوار</h2></a
-                  >
-                </div>
-                <div class="stores-item">
-                  <a class="stores-link" href="./coolShirt.html"
-                    ><h2>تخفیف های کفش</h2></a
-                  >
-                </div>
-              </div>
-            </div>
-            <div class="menu-right-item">
-              <a class="menu-right-link" href="#">تماس با ما</a>
-                    </div>
-                    <div class="menu-right-item">
-                        <a class="menu-right-link" href="./aboutUs.html">درباره ما</a>
+                            <div v-if="item.store == 'off'" v-for="offItem in offs" :key="offItem.id"
+                                class="stores-item">
+                                <a :href="offItem.url" class="stores-link">
+                                    <h2>{{ offItem.text }}</h2>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <div class="menu-container-item" id="menu-container-item3">
                     <!-- ---------------------Search SVG -------------------------- -->
-                    <div class="menu-icon">
-                        <a class="search-icon" onclick="displaySearchBox()">
+                    <div v-for="icon in menuIcons" :key="icon.id" class="menu-icon">
+                        <a :href="icon.url" :class="icon.id == 1 ? 'search-icon' : '' ">
+                            <span v-if="icon.id == 3" class="show-num">{{ cartProductNumber }}</span>
                             <i class="ws-svg-icon">
-                  <svg width="24" height="24" id="searchSVG">
-                    <path
-                      fill-rule="evenodd"
-                      d="M10.875 3.75a7.125 7.125 0 100 14.25 7.125 7.125 0 000-14.25zM2.25 10.875a8.625 8.625 0 1117.25 0 8.625 8.625 0 01-17.25 0z"
-                    ></path>
-                    <path
-                      fill-rule="evenodd"
-                      d="M15.913 15.914a.75.75 0 011.06 0l4.557 4.556a.75.75 0 01-1.06 1.06l-4.557-4.556a.75.75 0 010-1.06z"
-                    ></path>
-                    <!-- --------------------------Exit SVG-----------------   -->
-                  </svg>
-                  <svg width="24" height="24" id="exitSVG">
-                    <path
-                      d="M2.219.781L.78 2.22 9.562 11l-8.78 8.781 1.437 1.438L11 12.437l8.781 8.782 1.438-1.438L12.437 11l8.782-8.781L19.78.78 11 9.562 2.219.783z"
-                    ></path>
-                  </svg>
-                </i>
+                                <svg v-if="icon.id == 1" width="24" height="24" id="searchSVG"
+                                    v-on:click=displaySearchBox() :style="{display: searchIconDisplay}">
+                                    <path fill-rule="evenodd"
+                                        d="M10.875 3.75a7.125 7.125 0 100 14.25 7.125 7.125 0 000-14.25zM2.25 10.875a8.625 8.625 0 1117.25 0 8.625 8.625 0 01-17.25 0z">
+                                    </path>
+                                    <path fill-rule="evenodd"
+                                        d="M15.913 15.914a.75.75 0 011.06 0l4.557 4.556a.75.75 0 01-1.06 1.06l-4.557-4.556a.75.75 0 010-1.06z">
+                                    </path>
+                                    <!-- --------------------------Exit SVG-----------------   -->
+                                </svg>
+                                <svg v-if="icon.id == 1" width="24" height="24" id="exitSVG"
+                                    v-on:click=hiddenSearchBox() :style="{display: exitIconDisplay}">
+                                    <path
+                                        d="M2.219.781L.78 2.22 9.562 11l-8.78 8.781 1.437 1.438L11 12.437l8.781 8.782 1.438-1.438L12.437 11l8.782-8.781L19.78.78 11 9.562 2.219.783z">
+                                    </path>
+                                </svg>
+
+                                <svg v-if="icon.id == 2" width="24" height="24">
+                                    <path fill-rule="evenodd"
+                                        d="M12 3.75a5.25 5.25 0 100 10.5 5.25 5.25 0 000-10.5zM5.25 9a6.75 6.75 0 1113.5 0 6.75 6.75 0 01-13.5 0z">
+                                    </path>
+                                    <path fill-rule="evenodd"
+                                        d="M12 15.75a9.754 9.754 0 00-8.445 4.874.75.75 0 11-1.3-.75 11.254 11.254 0 0119.49 0 .75.75 0 01-1.3.75A9.754 9.754 0 0012 15.75z">
+                                    </path>
+                                </svg>
+
+                                <svg v-if="icon.id == 3" width="24" height="24">
+                                    <path
+                                        d="M7.5 21.75a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM17.25 21.75a1.5 1.5 0 100-3 1.5 1.5 0 000 3z">
+                                    </path>
+                                    <path fill-rule="evenodd"
+                                        d="M0 3a.75.75 0 01.75-.75h1.577A1.5 1.5 0 013.77 3.338L4.53 6h16.256a.75.75 0 01.72.956l-2.474 8.662a2.25 2.25 0 01-2.163 1.632H7.88a2.25 2.25 0 01-2.163-1.632l-2.47-8.645a.738.738 0 01-.01-.033l-.91-3.19H.75A.75.75 0 010 3zm4.959 4.5l2.201 7.706a.75.75 0 00.721.544h8.988a.75.75 0 00.72-.544L19.792 7.5H4.96z">
+                                    </path>
+                                </svg>
+                            </i>
                         </a>
                     </div>
-                    <!-- --------------------- SVG ------------------------------ -->
-                    <div class="menu-icon">
-                        <a href="#">
-                            <i class="ws-svg-icon">
-                  <svg width="24" height="24">
-                    <path
-                      fill-rule="evenodd"
-                      d="M12 3.75a5.25 5.25 0 100 10.5 5.25 5.25 0 000-10.5zM5.25 9a6.75 6.75 0 1113.5 0 6.75 6.75 0 01-13.5 0z"
-                    ></path>
-                    <path
-                      fill-rule="evenodd"
-                      d="M12 15.75a9.754 9.754 0 00-8.445 4.874.75.75 0 11-1.3-.75 11.254 11.254 0 0119.49 0 .75.75 0 01-1.3.75A9.754 9.754 0 0012 15.75z"
-                    ></path>
-                  </svg> </i
-              ></a>
-            </div>
-            <!-- --------------------- SVG ---------------------------------------- -->
-            <div class="menu-icon">
-              <a href="#">
-                <span class="show-num">0</span>
-                <i class="ws-svg-icon"
-                  ><svg width="24" height="24">
-                    <path
-                      d="M7.5 21.75a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM17.25 21.75a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"
-                    ></path>
-                    <path
-                      fill-rule="evenodd"
-                      d="M0 3a.75.75 0 01.75-.75h1.577A1.5 1.5 0 013.77 3.338L4.53 6h16.256a.75.75 0 01.72.956l-2.474 8.662a2.25 2.25 0 01-2.163 1.632H7.88a2.25 2.25 0 01-2.163-1.632l-2.47-8.645a.738.738 0 01-.01-.033l-.91-3.19H.75A.75.75 0 010 3zm4.959 4.5l2.201 7.706a.75.75 0 00.721.544h8.988a.75.75 0 00.72-.544L19.792 7.5H4.96z"
-                    ></path>
-                  </svg>
-                </i>
-                        </a>
-                    </div>
-                    <!-- ----------------------------------------------------------- -->
                 </div>
             </div>
         </div>
 
-        <div class="searchBox">
+        <div class="searchBox" :style="{display: searchBoxDisplay, opacity: searchBoxOpacity}">
             <form class="search-form" action="" method="get">
                 <input class="search-input" type="text" name="search" id="" placeholder="جستجو محصول ..." />
                 <!-- --------------------------- SVG -------------------------------- -->
                 <button class="search-submit" type="submit" value="search">
-            <a href="#">
-              <i class="ws-svg-icon search"
-                ><svg width="24" height="24">
-                  <path
-                    stroke="#ffffff"
-                    stroke-width="0.5"
-                    fill="#ffffff"
-                    d="M10.875 3.75a7.125 7.125 0 100 14.25 7.125 7.125 0 000-14.25zM2.25 10.875a8.625 8.625 0 1117.25 0 8.625 8.625 0 01-17.25 0z"
-                  ></path>
-                  <path
-                    stroke="#ffffff"
-                    stroke-width="0.5"
-                    fill="#ffffff"
-                    d="M15.913 15.914a.75.75 0 011.06 0l4.557 4.556a.75.75 0 01-1.06 1.06l-4.557-4.556a.75.75 0 010-1.06z"
-                  ></path>
-                </svg>
-              </i>
-            </a>
-          </button>
+                    <a href="#">
+                        <i class="ws-svg-icon search">
+                            <svg width="24" height="24">
+                                <path stroke="#ffffff" stroke-width="0.5" fill="#ffffff"
+                                    d="M10.875 3.75a7.125 7.125 0 100 14.25 7.125 7.125 0 000-14.25zM2.25 10.875a8.625 8.625 0 1117.25 0 8.625 8.625 0 01-17.25 0z">
+                                </path>
+                                <path stroke="#ffffff" stroke-width="0.5" fill="#ffffff"
+                                    d="M15.913 15.914a.75.75 0 011.06 0l4.557 4.556a.75.75 0 01-1.06 1.06l-4.557-4.556a.75.75 0 010-1.06z">
+                                </path>
+                            </svg>
+                        </i>
+                    </a>
+                </button>
             </form>
         </div>
+
     </div>
 
     <div class="index-body">
         <div class="slider">
-            <img v-for="item in imageProperty" :src="item.src" :style="{zIndex:item.elementZIndex, transform:item.elementTransform, top:item.elementTop, right:item.elementRight}" />
+            <img v-for="item in imageProperty" :src="item.src"
+                :style="{zIndex:item.elementZIndex, transform:item.elementTransform, top:item.elementTop, right:item.elementRight}" />
             <figcaption>
                 <form action="">
-                    <input v-for="check in radioChecked.slice().reverse()" :key="check.id" type="radio" :checked=" check.displayCheck == 'true' ? 'checked' : '' " v-on:click="this.SelectSlide(check.id)" />
+                    <input v-for="check in radioChecked.slice().reverse()" :key="check.id" type="radio"
+                        :checked=" check.displayCheck == 'true' ? 'checked' : '' "
+                        v-on:click="this.SelectSlide(check.id)" />
                 </form>
             </figcaption>
         </div>

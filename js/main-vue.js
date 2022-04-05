@@ -11,7 +11,7 @@ var isSelect2, isSelect1, isShowShop1, isShowShop2, effect, effect2, sliderIniti
     slider, moveSlides, runEffect2, isDisplaySearchBoxRun
 
 // ----------------------- Functions ------------------------------------------
-var AppInitializer = function() {
+var AppInitializer = function () {
     translateZ = [100, 100, 100, 100, -400];
     scaleX = [0.5, 0.5, 0.5, 0.5, -2];
     scaleY = [0.5, 0.5, 0.5, 0.5, -2];
@@ -29,12 +29,26 @@ var AppInitializer = function() {
     lastTransform = ["scaleX(1) scaleY(1)", "scaleX(1.5) scaleY(1.5)", "scaleX(2) scaleY(2)", "scaleX(2.5) scaleY(2.5)", "scaleX(3) scaleY(3)"];
     lastTop = ["55%", "42%", "34%", "33%", "36%"];
     lastRight = ["85%", "67%", "39%", "15%", "47%"];
-    radioChecked = [
-        { displayCheck: "false", id: 0 },
-        { displayCheck: "false", id: 1 },
-        { displayCheck: "false", id: 2 },
-        { displayCheck: "false", id: 3 },
-        { displayCheck: "true", id: 4 }
+    radioChecked = [{
+            displayCheck: "false",
+            id: 0
+        },
+        {
+            displayCheck: "false",
+            id: 1
+        },
+        {
+            displayCheck: "false",
+            id: 2
+        },
+        {
+            displayCheck: "false",
+            id: 3
+        },
+        {
+            displayCheck: "true",
+            id: 4
+        }
     ];
     imageProperty = [
 
@@ -84,7 +98,7 @@ var AppInitializer = function() {
     isDisplaySearchBoxRun = false;
 }
 
-var SliderInit = function() {
+var SliderInit = function () {
 
     if (isSelect2) {
         iter = 10;
@@ -115,7 +129,7 @@ var SliderInit = function() {
     effect = setInterval(MoveSlides, 50);
 }
 
-var MoveSlides = function() {
+var MoveSlides = function () {
 
     var imgIndex = totalIndex;
 
@@ -171,7 +185,7 @@ var MoveSlides = function() {
     }
 }
 
-var RunEffect2 = function() {
+var RunEffect2 = function () {
 
     if (isSelect1) {
 
@@ -238,7 +252,7 @@ var RunEffect2 = function() {
     }
 }
 
-var SelectSlide = function(number) {
+var SelectSlide = function (number) {
 
     clearTimeout(effect2);
     clearInterval(effect);
@@ -267,7 +281,7 @@ var SelectSlide = function(number) {
     effect = setInterval(MoveSlides, 50);
 }
 
-var MoveSelectSlide = function(num) {
+var MoveSelectSlide = function (num) {
 
     let localCounter = 0;
     let imageNum = totalIndex;
@@ -311,9 +325,7 @@ var sliderInstance = new Vue({
         radioChecked,
     },
     computed: {
-        showSlide: function(check) {
-            this.SelectSlide()
-        }
+
     }
 })
 
@@ -321,3 +333,227 @@ sliderInstance.SelectSlide = SelectSlide
 
 
 setTimeout(SliderInit, 4000);
+
+var body = document.body
+
+var coverPart = new Vue({
+    el: ".cover",
+    data: {
+        coverBackColor: "transparent",
+        coverVisibility: "hidden",
+        coverOpacity: "0",
+        coverHeight: "0px",
+    }
+})
+
+var menuItems = [{
+        id: 1,
+        itemUrl: "./index.html",
+        sub: false,
+        text: "خانه",
+        store: "",
+    },
+    {
+        id: 2,
+        itemUrl: "",
+        sub: true,
+        text: "فروشگاه ها",
+        store: "main",
+    },
+    {
+        id: 3,
+        itemUrl: "",
+        sub: true,
+        text: "تخفیف ها",
+        store: "off",
+    },
+    {
+        id: 4,
+        itemUrl: "./aboutUs.html",
+        sub: false,
+        text: "تماس با ما",
+        store: "",
+    },
+    {
+        id: 5,
+        itemUrl: "./aboutUs.html",
+        sub: false,
+        text: "درباره ما",
+        store: "",
+    },
+]
+
+var stores = [{
+        id: 1,
+        url: "./coolShirt.html",
+        text: "پوشاک بهاره و تابستانه"
+    },
+    {
+        id: 2,
+        url: "./coolShirt.html",
+        text: "پوشاک پاییزه و زمستانه"
+    },
+    {
+        id: 3,
+        url: "./coolShirt.html",
+        text: "جلیقه"
+    },
+    {
+        id: 4,
+        url: "./coolShirt.html",
+        text: "شلوار"
+    },
+    {
+        id: 5,
+        url: "./coolShirt.html",
+        text: "کفش"
+    },
+]
+
+var offs = [{
+        id: 1,
+        url: "./coolShirt.html",
+        text: "تخفیف های پوشاک بهاره و تابستانه"
+    },
+    {
+        id: 2,
+        url: "./coolShirt.html",
+        text: "تخفیف های پوشاک پاییزه و زمستانه"
+    },
+    {
+        id: 3,
+        url: "./coolShirt.html",
+        text: "تخفیف های جلیقه"
+    },
+    {
+        id: 4,
+        url: "./coolShirt.html",
+        text: "تخفیف های شلوار"
+    },
+    {
+        id: 5,
+        url: "./coolShirt.html",
+        text: "تخفیف های کفش"
+    },
+]
+
+var menuIcons = [{
+        id: 1,
+        url: "#",
+    },
+    {
+        id: 2,
+        url: "#",
+    },
+    {
+        id: 3,
+        url: "#",
+    }
+]
+
+var headerPart = new Vue({
+    el: ".header-section",
+
+    data: {
+        menuItems,
+        stores,
+        offs,
+        menuIcons,
+        body,
+        cartProductNumber: 0,
+        searchIconDisplay: "inline-block",
+        exitIconDisplay: "none",
+        isDisplaySearchBoxRun: false,
+        searchBoxDisplay: "none",
+        searchBoxOpacity: "0",
+    },
+
+    computed: {
+        showSubMenu: function () {
+            return itemId => {
+                var element_1 = this.$refs[`pointer_${itemId}`][0]
+                var element_2 = this.$refs[`store_${itemId}`][0]
+
+                // console.log(element_1)
+                element_1.style.visibility = "visible"
+                element_2.style.visibility = "visible"
+
+                element_1.style.opacity = "1"
+                element_2.style.opacity = "1"
+
+                element_1.style.top = "71px"
+                element_2.style.top = "86px"
+            }
+        },
+
+        hiddenSubMenu: function () {
+            return (event, itemId) => {
+                var element_1 = this.$refs[`pointer_${itemId}`][0]
+                var element_2 = this.$refs[`store_${itemId}`][0]
+
+                var rect = element_2.getBoundingClientRect();
+
+                var y = rect.top;
+                var x = rect.left;
+                var h = rect.height;
+                var w = rect.width;
+                var my = event.clientY;
+                var mx = event.clientX;
+                var diffY = my - y;
+                var diffX = mx - x;
+                var condition1 = diffX >= 0 && diffX <= w;
+                var condition2 = diffY >= 0 && diffY < h;
+
+                if (condition1 && condition2) return;
+
+                element_1.style.visibility = "hidden"
+                element_2.style.visibility = "hidden"
+
+                element_1.style.opacity = "0"
+                element_2.style.opacity = "0"
+
+                element_1.style.top = "61px"
+                element_2.style.top = "76px"
+            }
+        },
+
+        displaySearchBox: function () {
+
+            return () => {
+                this.isDisplaySearchBoxRun = true;
+
+                this.searchBoxDisplay = "block"
+
+                coverPart.coverVisibility = "visible"
+                coverPart.coverOpacity = "1"
+                coverPart.coverBackColor = "rgba(0,0,0,0.5)"
+                var bodyHeight = this.body.offsetHeight
+                coverPart.coverHeight = `${bodyHeight}px`
+
+                this.searchIconDisplay = "none"
+                this.exitIconDisplay = "inline-block"
+
+                setTimeout(() => {
+                    this.searchBoxOpacity = "1"
+                }, 0);
+            }
+        },
+
+        hiddenSearchBox: function () {
+
+            return () => {
+                this.searchBoxOpacity = "0"
+                this.searchBoxDisplay = "none"
+
+                coverPart.coverVisibility = "hidden"
+                coverPart.coverOpacity = "0"
+                coverPart.coverBackColor = "transparent"
+                coverPart.coverHeight = `0px`
+
+                this.searchIconDisplay = "inline-block"
+                this.exitIconDisplay = "none"
+            }
+        }
+    }
+
+})
