@@ -466,6 +466,17 @@ var headerPart = new Vue({
         isDisplaySearchBoxRun: false,
         searchBoxDisplay: "none",
         searchBoxOpacity: "0",
+        compIconHeight: "46px",
+        iconBorderRadi: "5px 5px 5px 5px",
+        compMenuHeight: 0,
+        preCompMenuHeight: 255,
+        compMenuPadding: "0px",
+        showCompMenu: false,
+        showSubCom: {
+            subCompMenu_2: false,
+            subCompMenu_3: false
+        }
+        // SubCompMenuRun: false,
     },
 
     computed: {
@@ -552,6 +563,50 @@ var headerPart = new Vue({
 
                 this.searchIconDisplay = "inline-block"
                 this.exitIconDisplay = "none"
+            }
+        },
+        CompMenu: function () {
+
+            return () => {
+                // if (this.SubCompMenuRun) {
+                //     this.SubCompMenuRun = false
+                //     return
+                // }
+                if (this.showCompMenu) {
+                    this.compMenuHeight = 0
+                    this.compMenuPadding = "0px"
+                    this.compIconHeight = "46px"
+                    this.iconBorderRadi = "5px 5px 5px 5px"
+                    this.showCompMenu = false
+                } else {
+                    this.compMenuHeight = this.preCompMenuHeight
+                    this.compMenuPadding = "20px"
+                    this.compIconHeight = "61px"
+                    this.iconBorderRadi = "5px 5px 0px 0px"
+                    this.showCompMenu = true
+                }
+            }
+        },
+        SubCompMenu: function () {
+            return compItemId => {
+                this.SubCompMenuRun = true
+
+                if (!this.showSubCom[`subCompMenu_${compItemId}`]) {
+                    this.$refs[`plus_${compItemId}`][0].style.display = "none"
+                    this.$refs[`dash_${compItemId}`][0].style.display = "inline-block"
+                    this.$refs[`subCompMenu_${compItemId}`][0].style.height = "180px"
+                    this.compMenuHeight = this.compMenuHeight + 180
+                    this.preCompMenuHeight = this.compMenuHeight
+                    this.showSubCom[`subCompMenu_${compItemId}`] = true
+                } else {
+                    this.$refs[`plus_${compItemId}`][0].style.display = "inline-block"
+                    this.$refs[`dash_${compItemId}`][0].style.display = "none"
+                    this.$refs[`subCompMenu_${compItemId}`][0].style.height = "0px"
+                    this.compMenuHeight = this.compMenuHeight - 180
+                    this.preCompMenuHeight = this.compMenuHeight
+                    this.showSubCom[`subCompMenu_${compItemId}`] = false
+
+                }
             }
         }
     }

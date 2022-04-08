@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/fontawesome.min.css" />
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/bootstrap-icons.css" />
     <title>صفحه اصلی | بوتیک من</title>
 </head>
 
@@ -50,6 +51,43 @@
                                 </a>
                             </div>
                         </div>
+                    </div>
+
+                    <div class="compact-icon" @click=CompMenu() :ref="'compIcon'"
+                        :style="{height: compIconHeight, borderRadius: iconBorderRadi}">
+                        <i class="bi bi-list"></i>
+                        <h2>فهرست</h2>
+                    </div>
+
+                    <div class="compactMenu-container"
+                        :style="{height: `${compMenuHeight}px`, padding: compMenuPadding}" :ref="'compMenu'">
+                        <div v-for="compItem in menuItems" :key="compItem.id" class="compactMenu-item">
+
+                            <a class="compactMenu-link" :href="compItem.sub ? null : compItem.itemUrl"
+                                @click="compItem.sub == true ? SubCompMenu(compItem.id) : '' ">
+                                <h2>{{ compItem.text }}</h2>
+                                <i v-if="compItem.sub == true" class="bi bi-plus" :ref="`plus_${compItem.id}`"></i>
+                                <i v-if="compItem.sub == true" class="bi bi-dash" :ref="`dash_${compItem.id}`"></i>
+                            </a>
+
+                            <div v-if="compItem.sub == true" class="subCompMenu-container"
+                                :ref="`subCompMenu_${compItem.id}`">
+
+                                <a v-if="compItem.store == 'main'" v-for="CompStoreItem in stores"
+                                    :key="CompStoreItem.id" class="subCompMenu-link" :href="CompStoreItem.url">
+
+                                    <h2>{{ CompStoreItem.text }}</h2>
+                                </a>
+
+                                <a v-if="compItem.store == 'off'" v-for="CompOffItem in offs" :key="CompOffItem.id"
+                                    class="subCompMenu-link" :href="CompOffItem.url">
+
+                                    <h2>{{ CompOffItem.text }}</h2>
+                                </a>
+
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
@@ -98,31 +136,30 @@
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="searchBox" :style="{display: searchBoxDisplay, opacity: searchBoxOpacity}">
-            <form class="search-form" action="" method="get">
-                <input class="search-input" type="text" name="search" id="" placeholder="جستجو محصول ..." />
-                <!-- --------------------------- SVG -------------------------------- -->
-                <button class="search-submit" type="submit" value="search">
-                    <a href="#">
-                        <i class="ws-svg-icon search">
-                            <svg width="24" height="24">
-                                <path stroke="#ffffff" stroke-width="0.5" fill="#ffffff"
-                                    d="M10.875 3.75a7.125 7.125 0 100 14.25 7.125 7.125 0 000-14.25zM2.25 10.875a8.625 8.625 0 1117.25 0 8.625 8.625 0 01-17.25 0z">
-                                </path>
-                                <path stroke="#ffffff" stroke-width="0.5" fill="#ffffff"
-                                    d="M15.913 15.914a.75.75 0 011.06 0l4.557 4.556a.75.75 0 01-1.06 1.06l-4.557-4.556a.75.75 0 010-1.06z">
-                                </path>
-                            </svg>
-                        </i>
-                    </a>
-                </button>
-            </form>
-        </div>
+            <div class="searchBox" :style="{display: searchBoxDisplay, opacity: searchBoxOpacity}">
+                <form class="search-form" action="" method="get">
+                    <input class="search-input" type="text" name="search" id="" placeholder="جستجو محصول ..." />
+                    <!-- --------------------------- SVG -------------------------------- -->
+                    <button class="search-submit" type="submit" value="search">
+                        <a href="#">
+                            <i class="ws-svg-icon search">
+                                <svg width="24" height="24">
+                                    <path stroke="#ffffff" stroke-width="0.5" fill="#ffffff"
+                                        d="M10.875 3.75a7.125 7.125 0 100 14.25 7.125 7.125 0 000-14.25zM2.25 10.875a8.625 8.625 0 1117.25 0 8.625 8.625 0 01-17.25 0z">
+                                    </path>
+                                    <path stroke="#ffffff" stroke-width="0.5" fill="#ffffff"
+                                        d="M15.913 15.914a.75.75 0 011.06 0l4.557 4.556a.75.75 0 01-1.06 1.06l-4.557-4.556a.75.75 0 010-1.06z">
+                                    </path>
+                                </svg>
+                            </i>
+                        </a>
+                    </button>
+                </form>
+            </div>
 
+        </div>
     </div>
-
     <div class="index-body">
         <div class="slider">
             <img v-for="item in imageProperty" :src="item.src"
