@@ -161,7 +161,7 @@
         </div>
     </div>
     <div class="index-body">
-        <div class="slider">
+        <div class="slider" :style="{height: `${0.41*body.clientWidth}px`}">
             <img v-for="item in imageProperty" :src="item.src"
                 :style="{zIndex:item.elementZIndex, transform:item.elementTransform, top:item.elementTop, right:item.elementRight}" />
             <figcaption>

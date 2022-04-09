@@ -10,6 +10,7 @@ var totalIndex, iter, sliderCounter, counter, iteration, count50, divid, m, num1
 var isSelect2, isSelect1, isShowShop1, isShowShop2, effect, effect2, sliderInitializer,
     slider, moveSlides, runEffect2, isDisplaySearchBoxRun
 
+var body = document.body
 // ----------------------- Functions ------------------------------------------
 var AppInitializer = function () {
     translateZ = [100, 100, 100, 100, -400];
@@ -323,6 +324,7 @@ var sliderInstance = new Vue({
     data: {
         imageProperty,
         radioChecked,
+        body,
     },
     computed: {
 
@@ -334,7 +336,6 @@ sliderInstance.SelectSlide = SelectSlide
 
 setTimeout(SliderInit, 4000);
 
-var body = document.body
 
 var coverPart = new Vue({
     el: ".cover",
@@ -589,7 +590,7 @@ var headerPart = new Vue({
         },
         SubCompMenu: function () {
             return compItemId => {
-                this.SubCompMenuRun = true
+                // this.SubCompMenuRun = true
 
                 if (!this.showSubCom[`subCompMenu_${compItemId}`]) {
                     this.$refs[`plus_${compItemId}`][0].style.display = "none"
