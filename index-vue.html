@@ -137,7 +137,7 @@
                 </div>
             </div>
 
-            <div class="searchBox" :style="{display: searchBoxDisplay, opacity: searchBoxOpacity}">
+            <div class="searchBox" :style="{display: searchBoxDisplay, opacity: searchBoxOpacity}" :ref="'searchBox'">
                 <form class="search-form" action="" method="get">
                     <input class="search-input" type="text" name="search" id="" placeholder="جستجو محصول ..." />
                     <!-- --------------------------- SVG -------------------------------- -->
@@ -160,6 +160,7 @@
 
         </div>
     </div>
+
     <div class="index-body">
         <div class="slider" :style="{height: `${0.41*body.clientWidth}px`}">
             <img v-for="item in imageProperty" :src="item.src"

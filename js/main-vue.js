@@ -465,6 +465,7 @@ var headerPart = new Vue({
         searchIconDisplay: "inline-block",
         exitIconDisplay: "none",
         isDisplaySearchBoxRun: false,
+        isSearchBoxDisplay: false,
         searchBoxDisplay: "none",
         searchBoxOpacity: "0",
         compIconHeight: "46px",
@@ -479,7 +480,46 @@ var headerPart = new Vue({
         }
         // SubCompMenuRun: false,
     },
+    mounted() {
 
+        document.addEventListener(
+            "click",
+            (event) => {
+                if (this.isDisplaySearchBoxRun) {
+                    this.isDisplaySearchBoxRun = false;
+                    return;
+                }
+
+                if (!this.isSearchBoxDisplay) return
+
+                var rect = this.$refs["searchBox"].getBoundingClientRect();
+                var y = rect.top;
+                var my = event.clientY;
+                var diff = my - y;
+
+                if (diff < 0 || diff > 160) {
+
+                    this.searchBoxOpacity = "0"
+                    this.searchBoxDisplay = "none"
+
+                    coverPart.coverVisibility = "hidden"
+                    coverPart.coverOpacity = "0"
+                    coverPart.coverBackColor = "transparent"
+                    coverPart.coverHeight = `0px`
+
+                    this.searchIconDisplay = "inline-block"
+                    this.exitIconDisplay = "none"
+
+                    this.isSearchBoxDisplay = false
+
+                } else {
+                    return;
+                }
+            },
+            false
+        );
+
+    },
     computed: {
         showSubMenu: function () {
             return itemId => {
@@ -533,6 +573,7 @@ var headerPart = new Vue({
 
             return () => {
                 this.isDisplaySearchBoxRun = true;
+                this.isSearchBoxDisplay = true;
 
                 this.searchBoxDisplay = "block"
 
@@ -564,6 +605,8 @@ var headerPart = new Vue({
 
                 this.searchIconDisplay = "inline-block"
                 this.exitIconDisplay = "none"
+
+                this.isSearchBoxDisplay = false;
             }
         },
         CompMenu: function () {
