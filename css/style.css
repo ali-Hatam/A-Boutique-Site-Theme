@@ -728,8 +728,8 @@ hr {
   text-align: center;
   font-size: 45px;
   position: relative;
-  top: 30%;
-  opacity: 0;
+  /* top: 30%; */
+  /* opacity: 0; */
   -webkit-transition: all 1s ease-out;
   -moz-transition: all 1s ease-out;
   -ms-transition: all 1s ease-out;
@@ -818,10 +818,11 @@ hr {
 
 .moving-container {
   width: 100%;
-  display: inline-flex;
+  display: grid;
+  grid-template-columns: 33.33% 33.33% 33.33%;
   justify-content: center;
   position: relative;
-  /* left: 0%; */
+  padding: 0px 70px;
   -webkit-transition: all 0.5s ease-out;
   -moz-transition: all 0.5s ease-out;
   -ms-transition: all 0.5s ease-out;
@@ -836,9 +837,10 @@ hr {
 
 .products-item {
   position: relative;
-  opacity: 0;
-  top: 200px;
-  width: 27%;
+  opacity: 1;
+  /* top: 200px; */
+  width: 90%;
+  margin: 0 auto;
   -webkit-transition: all 1s ease-out;
   -moz-transition: all 1s ease-out;
   -ms-transition: all 1s ease-out;
