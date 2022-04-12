@@ -387,54 +387,414 @@ var menuItems = [{
 var stores = [{
         id: 1,
         url: "./coolShirt.html",
-        text: "پوشاک بهاره و تابستانه"
+        text: "پوشاک بهاره و تابستانه",
+        products: [{
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }]
     },
     {
         id: 2,
         url: "./coolShirt.html",
-        text: "پوشاک پاییزه و زمستانه"
+        text: "پوشاک پاییزه و زمستانه",
+        products: [{
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }]
     },
     {
         id: 3,
         url: "./coolShirt.html",
-        text: "جلیقه"
+        text: "جلیقه",
+        products: [{
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }]
     },
     {
         id: 4,
         url: "./coolShirt.html",
-        text: "شلوار"
+        text: "شلوار",
+        products: [{
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }]
     },
     {
         id: 5,
         url: "./coolShirt.html",
-        text: "کفش"
+        text: "کفش",
+        products: [{
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }]
     },
 ]
 
 var offs = [{
         id: 1,
         url: "./coolShirt.html",
-        text: "تخفیف های پوشاک بهاره و تابستانه"
+        text: "تخفیف های پوشاک بهاره و تابستانه",
+        products: [{
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }]
     },
     {
         id: 2,
         url: "./coolShirt.html",
-        text: "تخفیف های پوشاک پاییزه و زمستانه"
+        text: "تخفیف های پوشاک پاییزه و زمستانه",
+        products: [{
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }]
     },
     {
         id: 3,
         url: "./coolShirt.html",
-        text: "تخفیف های جلیقه"
+        text: "تخفیف های جلیقه",
+        products: [{
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }]
     },
     {
         id: 4,
         url: "./coolShirt.html",
-        text: "تخفیف های شلوار"
+        text: "تخفیف های شلوار",
+        products: [{
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }]
     },
     {
         id: 5,
         url: "./coolShirt.html",
-        text: "تخفیف های کفش"
+        text: "تخفیف های کفش",
+        products: [{
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }, {
+            picture: "images/caption.jpg",
+            url: "#",
+            productName: "نام محصول",
+            productPrice: "قیمت محصول"
+        }]
     },
 ]
 
@@ -655,4 +1015,261 @@ var headerPart = new Vue({
         }
     }
 
+})
+
+var lastProduct = new Vue({
+    el: ".last-products-container",
+    data: {
+        stores,
+        previousStoreId: 1,
+        storesLeft: [0, 0, 0, 0, 0],
+        storesLeftLimit: [0, 0, 0, 0, 0],
+        flexConDisplay: ["inline-flex", "none", "none", "none", "none"],
+        chevRightOpac: "1",
+        chevLeftOpac: "0.5",
+    },
+    mounted() {
+        for (let index = 0; index < 5; index++) {
+
+            this.storesLeftLimit[index] = (this.$refs[`flexCont_${index+1}`][0].children.length - 1) * 100
+        }
+    },
+
+    computed: {
+        overFigure: function () {
+            return (shopId, productIndex) => {
+                this.$refs[`figure_${shopId}_${productIndex}`][0].style.backgroundColor = "rgba(33,33,33,0.3)";
+                this.$refs[`viewMore_${shopId}_${productIndex}`][0].style.opacity = "1";
+                this.$refs[`viewMore_${shopId}_${productIndex}`][0].style.top = "47%";
+            }
+        },
+        outFigure: function () {
+            return (shopId, productIndex) => {
+                this.$refs[`figure_${shopId}_${productIndex}`][0].style.backgroundColor = "#f0f0f000";
+                this.$refs[`viewMore_${shopId}_${productIndex}`][0].style.opacity = "0";
+                this.$refs[`viewMore_${shopId}_${productIndex}`][0].style.top = "48%";
+            }
+        },
+        showShop: function () {
+            return (shopId) => {
+                if (shopId == this.previousStoreId) return
+
+                Vue.set(lastProduct.flexConDisplay, this.previousStoreId - 1, "none")
+                this.$refs[`flexCont_${this.previousStoreId}`][0].style.opacity = "0"
+                this.$refs[`shopName_${this.previousStoreId}`][0].style.color = "#1d2547"
+                this.$refs[`shopBox_${this.previousStoreId}`][0].style.boxShadow = " 0px 2px #1d2547 "
+
+                Vue.set(lastProduct.flexConDisplay, shopId - 1, "inline-flex")
+                this.$refs[`shopName_${shopId}`][0].style.color = "rgb(240, 122, 75)"
+                this.$refs[`shopBox_${shopId}`][0].style.boxShadow = " 0px 2px rgb(240, 122, 75) "
+
+                setTimeout(() => {
+
+                    this.$refs[`flexCont_${shopId}`][0].style.opacity = "1"
+                }, 0)
+
+
+                if (this.storesLeft[shopId - 1] == this.storesLeftLimit[shopId - 1]) {
+
+                    this.chevRightOpac = "0.5"
+                    this.chevLeftOpac = "1"
+
+                } else if (this.storesLeft[shopId - 1] == 0) {
+
+                    this.chevRightOpac = "1"
+                    this.chevLeftOpac = "0.5"
+
+                } else {
+
+                    this.chevRightOpac = "1"
+                    this.chevLeftOpac = "1"
+                }
+
+                this.previousStoreId = shopId
+            }
+        },
+        moveRight: function () {
+            return () => {
+
+                for (let index = 0; index <= this.stores.length - 1; index++) {
+                    if (this.flexConDisplay[index] == "inline-flex") {
+
+                        if (this.storesLeft[index] == this.storesLeftLimit[index]) return
+
+                        this.storesLeft[index] += 100
+                        this.$refs[`flexCont_${index+1}`][0].style.left = `${this.storesLeft[index]}%`
+
+                        if (this.storesLeft[index] == this.storesLeftLimit[index]) {
+
+                            this.chevRightOpac = "0.5"
+                            this.chevLeftOpac = "1"
+
+                        } else {
+
+                            this.chevRightOpac = "1"
+                            this.chevLeftOpac = "1"
+                        }
+
+                    }
+
+                }
+            }
+        },
+        moveLeft: function () {
+            return () => {
+
+                for (let index = 0; index <= this.stores.length - 1; index++) {
+                    if (this.flexConDisplay[index] == "inline-flex") {
+
+                        if (this.storesLeft[index] == 0) return
+
+                        this.storesLeft[index] -= 100
+                        this.$refs[`flexCont_${index+1}`][0].style.left = `${this.storesLeft[index]}%`
+
+                        if (this.storesLeft[index] == 0) {
+
+                            this.chevRightOpac = "1"
+                            this.chevLeftOpac = "0.5"
+
+                        } else {
+
+                            this.chevRightOpac = "1"
+                            this.chevLeftOpac = "1"
+                        }
+
+                    }
+                }
+            }
+        },
+
+    }
+})
+
+
+var popularProducts = new Vue({
+    el: ".popular-products-container",
+    data: {
+        offs,
+        previousOffId: 1,
+        offLeft: [0, 0, 0, 0, 0],
+        offsLeftLimit: [0, 0, 0, 0, 0],
+        offConDisplay: ["inline-flex", "none", "none", "none", "none"],
+        chevRightOpac: "1",
+        chevLeftOpac: "0.5",
+    },
+    mounted() {
+        for (let index = 0; index < 5; index++) {
+
+            this.offsLeftLimit[index] = (this.$refs[`flexCont_${index+1}`][0].children.length - 1) * 100
+        }
+    },
+
+    computed: {
+        overFigure: function () {
+            return (shopId, productIndex) => {
+                this.$refs[`figure_${shopId}_${productIndex}`][0].style.backgroundColor = "rgba(33,33,33,0.3)";
+                this.$refs[`viewMore_${shopId}_${productIndex}`][0].style.opacity = "1";
+                this.$refs[`viewMore_${shopId}_${productIndex}`][0].style.top = "47%";
+            }
+        },
+        outFigure: function () {
+            return (shopId, productIndex) => {
+                this.$refs[`figure_${shopId}_${productIndex}`][0].style.backgroundColor = "#f0f0f000";
+                this.$refs[`viewMore_${shopId}_${productIndex}`][0].style.opacity = "0";
+                this.$refs[`viewMore_${shopId}_${productIndex}`][0].style.top = "48%";
+            }
+        },
+        showShop: function () {
+            return (shopId) => {
+                if (shopId == this.previousOffId) return
+
+                Vue.set(popularProducts.offConDisplay, this.previousOffId - 1, "none")
+                this.$refs[`flexCont_${this.previousOffId}`][0].style.opacity = "0"
+                this.$refs[`shopName_${this.previousOffId}`][0].style.color = "#1d2547"
+                this.$refs[`shopBox_${this.previousOffId}`][0].style.boxShadow = " 0px 2px #1d2547 "
+
+                Vue.set(popularProducts.offConDisplay, shopId - 1, "inline-flex")
+                this.$refs[`shopName_${shopId}`][0].style.color = "rgb(240, 122, 75)"
+                this.$refs[`shopBox_${shopId}`][0].style.boxShadow = " 0px 2px rgb(240, 122, 75) "
+
+                setTimeout(() => {
+
+                    this.$refs[`flexCont_${shopId}`][0].style.opacity = "1"
+                }, 0)
+
+
+                if (this.offLeft[shopId - 1] == this.offsLeftLimit[shopId - 1]) {
+
+                    this.chevRightOpac = "0.5"
+                    this.chevLeftOpac = "1"
+
+                } else if (this.offLeft[shopId - 1] == 0) {
+
+                    this.chevRightOpac = "1"
+                    this.chevLeftOpac = "0.5"
+
+                } else {
+
+                    this.chevRightOpac = "1"
+                    this.chevLeftOpac = "1"
+                }
+
+                this.previousOffId = shopId
+            }
+        },
+        moveRight: function () {
+            return () => {
+
+                for (let index = 0; index <= this.offs.length - 1; index++) {
+                    if (this.offConDisplay[index] == "inline-flex") {
+
+                        if (this.offLeft[index] == this.offsLeftLimit[index]) return
+
+                        this.offLeft[index] += 100
+                        this.$refs[`flexCont_${index+1}`][0].style.left = `${this.offLeft[index]}%`
+
+                        if (this.offLeft[index] == this.offsLeftLimit[index]) {
+
+                            this.chevRightOpac = "0.5"
+                            this.chevLeftOpac = "1"
+
+                        } else {
+
+                            this.chevRightOpac = "1"
+                            this.chevLeftOpac = "1"
+                        }
+
+                    }
+
+                }
+            }
+        },
+        moveLeft: function () {
+            return () => {
+
+                for (let index = 0; index <= this.offs.length - 1; index++) {
+                    if (this.offConDisplay[index] == "inline-flex") {
+
+                        if (this.offLeft[index] == 0) return
+
+                        this.offLeft[index] -= 100
+                        this.$refs[`flexCont_${index+1}`][0].style.left = `${this.offLeft[index]}%`
+
+                        if (this.offLeft[index] == 0) {
+
+                            this.chevRightOpac = "1"
+                            this.chevLeftOpac = "0.5"
+
+                        } else {
+
+                            this.chevRightOpac = "1"
+                            this.chevLeftOpac = "1"
+                        }
+
+                    }
+                }
+            }
+        },
+
+    }
 })
