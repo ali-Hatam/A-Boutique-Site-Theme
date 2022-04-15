@@ -819,7 +819,7 @@ hr {
 .moving-container {
   width: 100%;
   display: grid;
-  grid-template-columns: 33.33% 33.33% 33.33%;
+  grid-template-columns: 100%;
   justify-content: center;
   position: relative;
   padding: 0px 70px;
@@ -830,10 +830,17 @@ hr {
   transition: all 0.5s ease-out;
 }
 
-/* .moving-container:first-child {
-  display: inline-flex;
-  visibility: visible;
-} */
+@media only screen and (min-width:630px) {
+  .moving-container {
+    grid-template-columns: 50% 50%;
+  }
+}
+
+@media only screen and (min-width:960px) {
+  .moving-container {
+    grid-template-columns: 33.33% 33.33% 33.33%;
+  }
+}
 
 .products-item {
   position: relative;

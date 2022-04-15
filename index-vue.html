@@ -199,31 +199,31 @@
             </div>
 
             <div v-for="(shop,ind) in stores" class="flex-container" :ref="`flexCont_${shop.id}`"
-                :style="{width:`${(shop.products.length%3 == 0 ? shop.products.length / 3 : Math.floor(shop.products.length / 3) + 1)*100}%`,display:flexConDisplay[shop.id-1]}">
-                <div v-for="n1 in (shop.products.length%3 == 0 ? shop.products.length / 3 : Math.floor(shop.products.length / 3) + 1)"
+                :style="{width:`${(shop.products.length%moveConPart == 0 ? shop.products.length / moveConPart : Math.floor(shop.products.length / moveConPart) + 1)*100}%`,display:flexConDisplay[shop.id-1]}">
+                <div v-for="n1 in (shop.products.length%moveConPart == 0 ? shop.products.length / moveConPart : Math.floor(shop.products.length / moveConPart) + 1)"
                     class="moving-container">
                     <article
-                        v-for="n2 in (shop.products.length - (3*(n1-1))>=3 ? 3 : shop.products.length - (3*(n1-1)) )"
+                        v-for="n2 in (shop.products.length - (moveConPart*(n1-1))>=moveConPart ? moveConPart : shop.products.length - (moveConPart*(n1-1)) )"
                         class="products-item">
 
-                        <div class="fig-container" @mouseover=overFigure(shop.id,3*(n1-1)+(n2-1))
-                            @mouseout=outFigure(shop.id,3*(n1-1)+(n2-1))>
-                            <a :href="shop.products[3*(n1-1)+(n2-1)].url" class="link1">
-                                <figure :ref="`figure_${shop.id}_${3*(n1-1)+(n2-1)}`">
-                                    <img :src="shop.products[3*(n1-1)+(n2-1)].picture" alt="" />
+                        <div class="fig-container" @mouseover=overFigure(shop.id,moveConPart*(n1-1)+(n2-1))
+                            @mouseout=outFigure(shop.id,moveConPart*(n1-1)+(n2-1))>
+                            <a :href="shop.products[moveConPart*(n1-1)+(n2-1)].url" class="link1">
+                                <figure :ref="`figure_${shop.id}_${moveConPart*(n1-1)+(n2-1)}`">
+                                    <img :src="shop.products[moveConPart*(n1-1)+(n2-1)].picture" alt="" />
                                 </figure>
                             </a>
-                            <div class="view-more-container" :ref="`viewMore_${shop.id}_${3*(n1-1)+(n2-1)}`">
-                                <a :href="shop.products[3*(n1-1)+(n2-1)].url" class="view-more-link">
+                            <div class="view-more-container" :ref="`viewMore_${shop.id}_${moveConPart*(n1-1)+(n2-1)}`">
+                                <a :href="shop.products[moveConPart*(n1-1)+(n2-1)].url" class="view-more-link">
                                     <h2>مشاهده بیشتر</h2>
                                 </a>
                             </div>
                         </div>
                         <figcaption>
-                            <a :href="shop.products[3*(n1-1)+(n2-1)].url" class="link2"
-                                @mouseover=overFigure(shop.id,3*(n1-1)+(n2-1))
-                                @mouseout=outFigure(shop.id,3*(n1-1)+(n2-1))>{{ shop.products[3*(n1-1)+(n2-1)].productName }}</a>
-                            <h2>{{ shop.products[3*(n1-1)+(n2-1)].productPrice }}</h2>
+                            <a :href="shop.products[moveConPart*(n1-1)+(n2-1)].url" class="link2"
+                                @mouseover=overFigure(shop.id,moveConPart*(n1-1)+(n2-1))
+                                @mouseout=outFigure(shop.id,moveConPart*(n1-1)+(n2-1))>{{ shop.products[moveConPart*(n1-1)+(n2-1)].productName }}</a>
+                            <h2>{{ shop.products[moveConPart*(n1-1)+(n2-1)].productPrice }}</h2>
                             <a href="#" class="link3">افزودن به سبد خرید</a>
                         </figcaption>
                     </article>
@@ -265,30 +265,31 @@
             </div>
 
             <div v-for="(off,ind) in offs" class="flex-container" :ref="`flexCont_${off.id}`"
-                :style="{width:`${(off.products.length%3 == 0 ? off.products.length / 3 : Math.floor(off.products.length / 3) + 1)*100}%`,display:offConDisplay[off.id-1]}">
-                <div v-for="n1 in (off.products.length%3 == 0 ? off.products.length / 3 : Math.floor(off.products.length / 3) + 1)"
+                :style="{width:`${(off.products.length%moveConPart == 0 ? off.products.length / moveConPart : Math.floor(off.products.length / moveConPart) + 1)*100}%`,display:offConDisplay[off.id-1]}">
+                <div v-for="n1 in (off.products.length%moveConPart == 0 ? off.products.length / moveConPart : Math.floor(off.products.length / moveConPart) + 1)"
                     class="moving-container">
-                    <article v-for="n2 in (off.products.length - (3*(n1-1))>=3 ? 3 : off.products.length - (3*(n1-1)) )"
+                    <article
+                        v-for="n2 in (off.products.length - (moveConPart*(n1-1))>=moveConPart ? moveConPart : off.products.length - (moveConPart*(n1-1)) )"
                         class="products-item">
 
-                        <div class="fig-container" @mouseover=overFigure(off.id,3*(n1-1)+(n2-1))
-                            @mouseout=outFigure(off.id,3*(n1-1)+(n2-1))>
-                            <a :href="off.products[3*(n1-1)+(n2-1)].url" class="link1">
-                                <figure :ref="`figure_${off.id}_${3*(n1-1)+(n2-1)}`">
-                                    <img :src="off.products[3*(n1-1)+(n2-1)].picture" alt="" />
+                        <div class="fig-container" @mouseover=overFigure(off.id,moveConPart*(n1-1)+(n2-1))
+                            @mouseout=outFigure(off.id,moveConPart*(n1-1)+(n2-1))>
+                            <a :href="off.products[moveConPart*(n1-1)+(n2-1)].url" class="link1">
+                                <figure :ref="`figure_${off.id}_${moveConPart*(n1-1)+(n2-1)}`">
+                                    <img :src="off.products[moveConPart*(n1-1)+(n2-1)].picture" alt="" />
                                 </figure>
                             </a>
-                            <div class="view-more-container" :ref="`viewMore_${off.id}_${3*(n1-1)+(n2-1)}`">
-                                <a :href="off.products[3*(n1-1)+(n2-1)].url" class="view-more-link">
+                            <div class="view-more-container" :ref="`viewMore_${off.id}_${moveConPart*(n1-1)+(n2-1)}`">
+                                <a :href="off.products[moveConPart*(n1-1)+(n2-1)].url" class="view-more-link">
                                     <h2>مشاهده بیشتر</h2>
                                 </a>
                             </div>
                         </div>
                         <figcaption>
-                            <a :href="off.products[3*(n1-1)+(n2-1)].url" class="link2"
-                                @mouseover=overFigure(off.id,3*(n1-1)+(n2-1))
-                                @mouseout=outFigure(off.id,3*(n1-1)+(n2-1))>{{ off.products[3*(n1-1)+(n2-1)].productName }}</a>
-                            <h2>{{ off.products[3*(n1-1)+(n2-1)].productPrice }}</h2>
+                            <a :href="off.products[moveConPart*(n1-1)+(n2-1)].url" class="link2"
+                                @mouseover=overFigure(off.id,moveConPart*(n1-1)+(n2-1))
+                                @mouseout=outFigure(off.id,moveConPart*(n1-1)+(n2-1))>{{ off.products[moveConPart*(n1-1)+(n2-1)].productName }}</a>
+                            <h2>{{ off.products[moveConPart*(n1-1)+(n2-1)].productPrice }}</h2>
                             <a href="#" class="link3">افزودن به سبد خرید</a>
                         </figcaption>
                     </article>
@@ -417,6 +418,7 @@
                     </div>
                 </div>
             </div>
+
         </footer>
     </div>
 </body>

@@ -1017,6 +1017,12 @@ var headerPart = new Vue({
 
 })
 
+// var ResizeFunction = () => {
+
+
+// }
+
+
 var lastProduct = new Vue({
     el: ".last-products-container",
     data: {
@@ -1027,12 +1033,45 @@ var lastProduct = new Vue({
         flexConDisplay: ["inline-flex", "none", "none", "none", "none"],
         chevRightOpac: "1",
         chevLeftOpac: "0.5",
+        moveConPart: 2,
+        prevMoveConPart: 2,
+        // ResizeFunction,
     },
-    mounted() {
+
+    created() {
+        if (window.innerWidth >= 960) {
+            this.moveConPart = 3
+        } else if (window.innerWidth >= 630 && window.innerWidth < 960) {
+            this.moveConPart = 2
+        } else {
+            this.moveConPart = 1
+        }
+
+        this.prevMoveConPart = this.moveConPart
+
+        visualViewport.addEventListener("resize", () => {
+            if (window.innerWidth >= 960) {
+                this.moveConPart = 3
+            } else if (window.innerWidth >= 630 && window.innerWidth < 960) {
+                this.moveConPart = 2
+            } else {
+                this.moveConPart = 1
+            }
+        })
+    },
+
+    updated() {
+
         for (let index = 0; index < 5; index++) {
 
             this.storesLeftLimit[index] = (this.$refs[`flexCont_${index+1}`][0].children.length - 1) * 100
+
+            var productInd = (this.storesLeft[index] / 100 + 1) * this.prevMoveConPart - (this.prevMoveConPart - 1)
+            this.storesLeft[index] = productInd % this.moveConPart == 0 ? ((productInd / this.moveConPart) - 1) * 100 : Math.floor(productInd / this.moveConPart) * 100
+            this.$refs[`flexCont_${index+1}`][0].style.left = `${this.storesLeft[index]}%`
         }
+
+        this.prevMoveConPart = this.moveConPart
     },
 
     computed: {
@@ -1156,13 +1195,46 @@ var popularProducts = new Vue({
         offConDisplay: ["inline-flex", "none", "none", "none", "none"],
         chevRightOpac: "1",
         chevLeftOpac: "0.5",
+        moveConPart: 3,
+        prevMoveConPart: 3,
     },
-    mounted() {
+
+    created() {
+        if (window.innerWidth >= 960) {
+            this.moveConPart = 3
+        } else if (window.innerWidth >= 630 && window.innerWidth < 960) {
+            this.moveConPart = 2
+        } else {
+            this.moveConPart = 1
+        }
+
+        this.prevMoveConPart = this.moveConPart
+
+        visualViewport.addEventListener("resize", () => {
+            if (window.innerWidth >= 960) {
+                this.moveConPart = 3
+            } else if (window.innerWidth >= 630 && window.innerWidth < 960) {
+                this.moveConPart = 2
+            } else {
+                this.moveConPart = 1
+            }
+        })
+    },
+
+    updated() {
+
         for (let index = 0; index < 5; index++) {
 
             this.offsLeftLimit[index] = (this.$refs[`flexCont_${index+1}`][0].children.length - 1) * 100
+
+            var productInd = (this.offLeft[index] / 100 + 1) * this.prevMoveConPart - (this.prevMoveConPart - 1)
+            this.offLeft[index] = productInd % this.moveConPart == 0 ? ((productInd / this.moveConPart) - 1) * 100 : Math.floor(productInd / this.moveConPart) * 100
+            this.$refs[`flexCont_${index+1}`][0].style.left = `${this.offLeft[index]}%`
         }
+
+        this.prevMoveConPart = this.moveConPart
     },
+
 
     computed: {
         overFigure: function () {
@@ -1273,6 +1345,7 @@ var popularProducts = new Vue({
 
     }
 })
+
 
 var footerTop = [{
     id: 0,
