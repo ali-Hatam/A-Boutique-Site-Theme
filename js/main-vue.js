@@ -1017,12 +1017,6 @@ var headerPart = new Vue({
 
 })
 
-// var ResizeFunction = () => {
-
-
-// }
-
-
 var lastProduct = new Vue({
     el: ".last-products-container",
     data: {
@@ -1035,16 +1029,40 @@ var lastProduct = new Vue({
         chevLeftOpac: "0.5",
         moveConPart: 2,
         prevMoveConPart: 2,
-        // ResizeFunction,
+        headerOpacity: "0",
+        headerTop: "30%",
+        productOpacity_1: "0",
+        productOpacity_2: "0",
+        productOpacity_3: "0",
+        productTop_1: "200px",
+        productTop_2: "200px",
+        productTop_3: "200px",
+        isHeaderShow: false,
+        isProductShow: false,
+        observer_1: new Object(),
+        observer_2: new Object(),
+        observer_3: new Object(),
+        observer_4: new Object(),
+        option1: {
+            threshold: [0.1]
+        },
+        option2: {
+            threshold: [0]
+        }
     },
 
     created() {
         if (window.innerWidth >= 960) {
             this.moveConPart = 3
+            this.storesLeftLimit = [200, 200, 200, 200, 200]
+
         } else if (window.innerWidth >= 630 && window.innerWidth < 960) {
             this.moveConPart = 2
+            this.storesLeftLimit = [300, 300, 300, 300, 300]
+
         } else {
             this.moveConPart = 1
+            this.storesLeftLimit = [600, 600, 600, 600, 600]
         }
 
         this.prevMoveConPart = this.moveConPart
@@ -1058,6 +1076,76 @@ var lastProduct = new Vue({
                 this.moveConPart = 1
             }
         })
+
+        this.observer_1 = new IntersectionObserver((entry) => {
+
+            if (entry.length > 1) return
+            if (!entry[0].isIntersecting) return
+            if (this.isProductShow) return
+
+            setTimeout(() => {
+                this.productOpacity_1 = "1"
+                this.productTop_1 = "0"
+            }, 0)
+
+            setTimeout(() => {
+                this.productOpacity_2 = "1"
+                this.productTop_2 = "0"
+            }, 250)
+
+            setTimeout(() => {
+                this.productOpacity_3 = "1"
+                this.productTop_3 = "0"
+            }, 500)
+
+            this.isProductShow = true
+
+        }, this.option1)
+
+
+        this.observer_2 = new IntersectionObserver((entry) => {
+
+            if (entry.length > 1) return
+            if (entry[0].isIntersecting) return
+            if (entry[0].boundingClientRect.top < 0) return
+            if (!this.isProductShow) return
+
+            this.productOpacity_1 = "0"
+            this.productTop_1 = "200px"
+
+            this.productOpacity_2 = "0"
+            this.productTop_2 = "200px"
+
+            this.productOpacity_3 = "0"
+            this.productTop_3 = "200px"
+
+            this.isProductShow = false
+
+        }, this.option2)
+
+        this.observer_3 = new IntersectionObserver((entry) => {
+
+            if (!entry[0].isIntersecting) return
+            if (this.isHeaderShow) return
+
+            this.headerOpacity = "1"
+            this.headerTop = "0"
+
+            this.isHeaderShow = true
+        }, this.option1)
+
+        this.observer_4 = new IntersectionObserver((entry) => {
+
+            if (entry[0].isIntersecting) return
+            if (!this.isHeaderShow) return
+            if (entry[0].boundingClientRect.top < 0) return
+
+            this.headerOpacity = "0"
+            this.headerTop = "30%"
+
+            this.isHeaderShow = false
+        }, this.option2)
+
     },
 
     updated() {
@@ -1072,6 +1160,17 @@ var lastProduct = new Vue({
         }
 
         this.prevMoveConPart = this.moveConPart
+    },
+
+    mounted() {
+
+        for (let index = 0; index < 5; index++) {
+            this.observer_1.observe(this.$refs[`flexCont_${index+1}`][0])
+            this.observer_2.observe(this.$refs[`flexCont_${index+1}`][0])
+        }
+
+        this.observer_3.observe(this.$refs["mainHeader"])
+        this.observer_4.observe(this.$refs["mainHeader"])
     },
 
     computed: {
@@ -1180,7 +1279,28 @@ var lastProduct = new Vue({
                 }
             }
         },
-
+        productOpacity: function () {
+            return (ind) => {
+                if (ind == 1) {
+                    return this.productOpacity_1
+                } else if (ind == 2) {
+                    return this.productOpacity_2
+                } else {
+                    return this.productOpacity_3
+                }
+            }
+        },
+        productTop: function () {
+            return (ind) => {
+                if (ind == 1) {
+                    return this.productTop_1
+                } else if (ind == 2) {
+                    return this.productTop_2
+                } else {
+                    return this.productTop_3
+                }
+            }
+        }
     }
 })
 
@@ -1197,15 +1317,42 @@ var popularProducts = new Vue({
         chevLeftOpac: "0.5",
         moveConPart: 3,
         prevMoveConPart: 3,
+        headerOpacity: "0",
+        headerTop: "30%",
+        productOpacity_1: "0",
+        productOpacity_2: "0",
+        productOpacity_3: "0",
+        productTop_1: "200px",
+        productTop_2: "200px",
+        productTop_3: "200px",
+        isHeaderShow: false,
+        isProductShow: false,
+        observer_1: new Object(),
+        observer_2: new Object(),
+        observer_3: new Object(),
+        observer_4: new Object(),
+        option1: {
+            threshold: [0.1]
+        },
+        option2: {
+            threshold: [0]
+        }
+
     },
 
     created() {
         if (window.innerWidth >= 960) {
             this.moveConPart = 3
+            this.offsLeftLimit = [200, 200, 200, 200, 200]
+
         } else if (window.innerWidth >= 630 && window.innerWidth < 960) {
             this.moveConPart = 2
+            this.offsLeftLimit = [300, 300, 300, 300, 300]
+
         } else {
             this.moveConPart = 1
+            this.offsLeftLimit = [600, 600, 600, 600, 600]
+
         }
 
         this.prevMoveConPart = this.moveConPart
@@ -1219,6 +1366,78 @@ var popularProducts = new Vue({
                 this.moveConPart = 1
             }
         })
+
+        this.observer_1 = new IntersectionObserver((entry) => {
+
+            if (entry.length > 1) return
+            if (!entry[0].isIntersecting) return
+            if (this.isProductShow) return
+
+            setTimeout(() => {
+                this.productOpacity_1 = "1"
+                this.productTop_1 = "0"
+            }, 0)
+
+            setTimeout(() => {
+                this.productOpacity_2 = "1"
+                this.productTop_2 = "0"
+            }, 250)
+
+            setTimeout(() => {
+                this.productOpacity_3 = "1"
+                this.productTop_3 = "0"
+            }, 500)
+
+            this.isProductShow = true
+
+        }, this.option1)
+
+
+        this.observer_2 = new IntersectionObserver((entry) => {
+
+            if (entry.length > 1) return
+            if (entry[0].isIntersecting) return
+            if (entry[0].boundingClientRect.top < 0) return
+            if (!this.isProductShow) return
+
+            this.productOpacity_1 = "0"
+            this.productTop_1 = "200px"
+
+            this.productOpacity_2 = "0"
+            this.productTop_2 = "200px"
+
+            this.productOpacity_3 = "0"
+            this.productTop_3 = "200px"
+
+            this.isProductShow = false
+
+        }, this.option2)
+
+
+        this.observer_3 = new IntersectionObserver((entry) => {
+
+            if (!entry[0].isIntersecting) return
+            if (this.isHeaderShow) return
+
+            this.headerOpacity = "1"
+            this.headerTop = "0"
+
+            this.isHeaderShow = true
+        }, this.option1)
+
+
+        this.observer_4 = new IntersectionObserver((entry) => {
+
+            if (entry[0].isIntersecting) return
+            if (!this.isHeaderShow) return
+            if (entry[0].boundingClientRect.top < 0) return
+
+            this.headerOpacity = "0"
+            this.headerTop = "30%"
+
+            this.isHeaderShow = false
+        }, this.option2)
+
     },
 
     updated() {
@@ -1235,6 +1454,17 @@ var popularProducts = new Vue({
         this.prevMoveConPart = this.moveConPart
     },
 
+    mounted() {
+
+        for (let index = 0; index < 5; index++) {
+            this.observer_1.observe(this.$refs[`flexCont_${index+1}`][0])
+            this.observer_2.observe(this.$refs[`flexCont_${index+1}`][0])
+        }
+
+        this.observer_3.observe(this.$refs["mainHeader"])
+        this.observer_4.observe(this.$refs["mainHeader"])
+
+    },
 
     computed: {
         overFigure: function () {
@@ -1342,7 +1572,28 @@ var popularProducts = new Vue({
                 }
             }
         },
-
+        productOpacity: function () {
+            return (ind) => {
+                if (ind == 1) {
+                    return this.productOpacity_1
+                } else if (ind == 2) {
+                    return this.productOpacity_2
+                } else {
+                    return this.productOpacity_3
+                }
+            }
+        },
+        productTop: function () {
+            return (ind) => {
+                if (ind == 1) {
+                    return this.productTop_1
+                } else if (ind == 2) {
+                    return this.productTop_2
+                } else {
+                    return this.productTop_3
+                }
+            }
+        }
     }
 })
 
