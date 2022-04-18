@@ -302,7 +302,8 @@
         <footer class="footer">
             <div class="footer-top">
 
-                <div v-for="(topItem, index) in footerTop" :key="topItem.id" class="footer-top-item">
+                <div v-for="(topItem, index) in footerTop" :key="topItem.id" class="footer-top-item"
+                    :ref="`footerTop_${topItem.id}`">
                     <div class="footer-item-container">
 
                         <svg v-if="topItem.id == 0" xmlns="http://www.w3.org/2000/svg"

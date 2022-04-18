@@ -1044,7 +1044,7 @@ var lastProduct = new Vue({
         observer_3: new Object(),
         observer_4: new Object(),
         option1: {
-            threshold: [0.1]
+            threshold: [0.7]
         },
         option2: {
             threshold: [0]
@@ -1332,7 +1332,7 @@ var popularProducts = new Vue({
         observer_3: new Object(),
         observer_4: new Object(),
         option1: {
-            threshold: [0.1]
+            threshold: [0.7]
         },
         option2: {
             threshold: [0]
@@ -1675,5 +1675,141 @@ var footer = new Vue({
     data: {
         footerTop,
         footerBottom,
-    }
+        observer_1: new Object,
+        observer_2: new Object,
+        option1: {
+            threshold: [0.7]
+        },
+        option2: {
+            threshold: [0]
+        }
+    },
+
+    created() {
+
+        this.observer_1 = new IntersectionObserver((entry) => {
+
+            if (entry.length == 1) {
+                if (!entry[0].isIntersecting) return
+                if (entry[0].target.children[0].style.opacity == "1") return
+
+                // console.log("entry1")
+                entry[0].target.children[0].style.opacity = "1"
+                entry[0].target.children[0].style.top = "0"
+
+            } else if (entry.length == 2) {
+                var firstTarget = entry[0].target.children[0]
+                var secondTarget = entry[1].target.children[0]
+
+                if (!entry[0].isIntersecting) return
+                if (firstTarget.style.opacity == "1" || secondTarget.style.opacity == "1") return
+
+                // console.log("entry2")
+
+                setTimeout(() => {
+                    firstTarget.style.opacity = "1"
+                    firstTarget.style.top = "0"
+                }, 0)
+
+                setTimeout(() => {
+                    secondTarget.style.opacity = "1"
+                    secondTarget.style.top = "0"
+                }, 250)
+
+            } else if (entry.length == 4) {
+
+                if (!entry[0].isIntersecting) return
+                if (entry[0].target.children[0].style.opacity == "1") return
+
+                // console.log("entry4")
+                setTimeout(() => {
+                    entry[0].target.children[0].style.opacity = "1"
+                    entry[0].target.children[0].style.top = "0"
+                }, 0)
+
+                setTimeout(() => {
+                    entry[1].target.children[0].style.opacity = "1"
+                    entry[1].target.children[0].style.top = "0"
+                }, 250)
+
+                setTimeout(() => {
+                    entry[2].target.children[0].style.opacity = "1"
+                    entry[2].target.children[0].style.top = "0"
+                }, 500)
+
+                setTimeout(() => {
+                    entry[3].target.children[0].style.opacity = "1"
+                    entry[3].target.children[0].style.top = "0"
+                }, 750)
+
+            } else {
+                // console.log("entry5")
+            }
+
+        }, this.option1)
+
+
+        this.observer_2 = new IntersectionObserver((entry) => {
+            // console.log(entry)
+            if (entry.length == 1) {
+                if (entry[0].isIntersecting) return
+                if (entry[0].boundingClientRect.top < 0) return
+                if (entry[0].target.children[0].style.opacity == "0") return
+
+                console.log(entry[0])
+                entry[0].target.children[0].style.opacity = "0"
+                entry[0].target.children[0].style.top = "55%"
+
+            } else if (entry.length == 2) {
+                var firstTarget = entry[0].target.children[0]
+                var secondTarget = entry[1].target.children[0]
+
+                if (entry[0].isIntersecting) return
+                if (entry[0].boundingClientRect.top < 0) return
+                if (firstTarget.style.opacity == "0") return
+
+                console.log("entry2")
+
+                firstTarget.style.opacity = "0"
+                firstTarget.style.top = "55%"
+
+                secondTarget.style.opacity = "0"
+                secondTarget.style.top = "55%"
+
+
+            } else if (entry.length == 4) {
+
+                if (entry[0].isIntersecting) return
+                if (entry[0].boundingClientRect.top < 0) return
+                if (entry[0].target.children[0].style.opacity == "0") return
+
+                console.log("entry4")
+
+                entry[0].target.children[0].style.opacity = "0"
+                entry[0].target.children[0].style.top = "55%"
+
+                entry[1].target.children[0].style.opacity = "0"
+                entry[1].target.children[0].style.top = "55%"
+
+                entry[2].target.children[0].style.opacity = "0"
+                entry[2].target.children[0].style.top = "55%"
+
+                entry[3].target.children[0].style.opacity = "0"
+                entry[3].target.children[0].style.top = "55%"
+
+            } else {
+                console.log("entry5")
+            }
+
+        }, this.option2)
+    },
+
+    mounted() {
+
+        for (let index = 0; index < footerTop.length; index++) {
+            this.observer_1.observe(this.$refs[`footerTop_${index}`][0])
+            this.observer_2.observe(this.$refs[`footerTop_${index}`][0])
+        }
+    },
+
 })
