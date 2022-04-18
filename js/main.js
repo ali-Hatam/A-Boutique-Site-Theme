@@ -289,6 +289,7 @@ displaySearchBox = () => {
         searchBox.style.display = "block";
         cover.style.visibility = "visible";
         cover.style.opacity = "1";
+        cover.style.backgroundColor = "rgba(0,0,0,0.5)"
         searchSVG.style.display = "none";
         exitSVG.style.display = "inline-block";
         setTimeout(() => {
@@ -299,6 +300,7 @@ displaySearchBox = () => {
         searchBox.style.display = "none";
         cover.style.opacity = "0";
         cover.style.visibility = "hidden";
+        cover.style.backgroundColor = "transparent"
         searchSVG.style.display = "inline-block";
         exitSVG.style.display = "none";
     }
@@ -408,7 +410,11 @@ showShop = (number2, thisTag) => {
     isShowShop1 = true;
     isShowShop2 = true;
 
-    var { flexContainer, prodctSection, shops } = Object;
+    var {
+        flexContainer,
+        prodctSection,
+        shops
+    } = Object;
     var FlexContainerLeft = [];
 
     var shop = thisTag.parentElement;
@@ -467,7 +473,10 @@ var popularFlexContainerLeft = [0, 0, 0, 0, 0];
 var lastFlexContainerLeft = [0, 0, 0, 0, 0];
 
 moveRight = (rightNum) => {
-    var { flexContainer, prodctSection } = Object;
+    var {
+        flexContainer,
+        prodctSection
+    } = Object;
     var FlexContainerLeft = [];
 
     if (rightNum == 1) {
@@ -510,7 +519,10 @@ moveRight = (rightNum) => {
 };
 
 moveLeft = (leftNum) => {
-    var { flexContainer, prodctSection } = Object;
+    var {
+        flexContainer,
+        prodctSection
+    } = Object;
     var FlexContainerLeft = [];
 
     if (leftNum == 1) {
@@ -556,7 +568,9 @@ var headerTitle = document.querySelector(".header-title");
 var lMainHeader = document.querySelector(".l-p-c-header");
 var pMainHeader = document.querySelector(".p-p-c-header");
 
-config1 = { threshold: [0.15] };
+config1 = {
+    threshold: [0.15]
+};
 observer1 = new IntersectionObserver((entries1) => {
     var items, item0, item1, item2, item3;
     var it;
@@ -637,7 +651,9 @@ observer1 = new IntersectionObserver((entries1) => {
     });
 }, config1);
 
-config2 = { threshold: [0] };
+config2 = {
+    threshold: [0]
+};
 observer2 = new IntersectionObserver((entries2) => {
     var items;
     var it;
@@ -683,7 +699,9 @@ observer2 = new IntersectionObserver((entries2) => {
     });
 }, config2);
 
-headerConfig1 = { threshold: [1] };
+headerConfig1 = {
+    threshold: [1]
+};
 observer3 = new IntersectionObserver((headerEntries1) => {
     var headerContainr;
 
@@ -710,7 +728,9 @@ observer3 = new IntersectionObserver((headerEntries1) => {
     });
 }, headerConfig1);
 
-headerConfig2 = { threshold: [0] };
+headerConfig2 = {
+    threshold: [0]
+};
 observer4 = new IntersectionObserver((headerEntries2) => {
     var headerContainr;
 
@@ -734,7 +754,9 @@ observer4 = new IntersectionObserver((headerEntries2) => {
     });
 }, headerConfig2);
 
-menuConfig1 = { threshold: [1] };
+menuConfig1 = {
+    threshold: [1]
+};
 observer5 = new IntersectionObserver((menuEntries1) => {
     menuEntries1.forEach((entry) => {
         if (!entry.isIntersecting) {
@@ -747,7 +769,9 @@ observer5 = new IntersectionObserver((menuEntries1) => {
     });
 }, menuConfig1);
 
-menuConfig2 = { threshold: [0] };
+menuConfig2 = {
+    threshold: [0]
+};
 observer6 = new IntersectionObserver((menuEntries2) => {
     menuEntries2.forEach((entry) => {
         if (entry.isIntersecting) {
