@@ -344,6 +344,7 @@ var coverPart = new Vue({
         coverVisibility: "hidden",
         coverOpacity: "0",
         coverHeight: "0px",
+        coverOverflow: "visible",
     }
 })
 
@@ -800,7 +801,7 @@ var offs = [{
 
 var menuIcons = [{
         id: 1,
-        url: "#",
+        url: null,
     },
     {
         id: 2,
@@ -834,12 +835,45 @@ var headerPart = new Vue({
         preCompMenuHeight: 255,
         compMenuPadding: "0px",
         showCompMenu: false,
+        bodyScroll: 0,
         showSubCom: {
             subCompMenu_2: false,
             subCompMenu_3: false
-        }
-        // SubCompMenuRun: false,
+        },
+        observer_1: new Object(),
+        option1: {
+            threshold: [1]
+        },
+        option2: {
+            threshold: [0]
+        },
     },
+
+    created() {
+
+        this.observer_1 = new IntersectionObserver((entry) => {
+
+            if (entry[0].isIntersecting) return
+
+            entry[0].target.style.position = "fixed"
+            entry[0].target.style.top = "0"
+
+            sliderInstance.$refs["slider"].parentElement.style.top = "86px"
+
+        }, this.option1)
+
+
+        this.observer_2 = new IntersectionObserver((entry) => {
+
+            if (!entry[0].isIntersecting) return
+
+            this.$refs["headerMenu"].style.position = "relative"
+
+            sliderInstance.$refs["slider"].parentElement.style.top = "0"
+
+        }, this.option2)
+    },
+
     mounted() {
 
         document.addEventListener(
@@ -879,7 +913,10 @@ var headerPart = new Vue({
             false
         );
 
+        this.observer_1.observe(this.$refs["headerMenu"])
+        this.observer_2.observe(this.$refs["headerTitle"])
     },
+
     computed: {
         showSubMenu: function () {
             return itemId => {
@@ -937,11 +974,19 @@ var headerPart = new Vue({
 
                 this.searchBoxDisplay = "block"
 
+                this.bodyScroll = window.scrollY
+
+                this.body.style.top = `${this.body.getBoundingClientRect().top}px`
+                this.body.style.position = "fixed"
+                this.body.style.overflowY = "scroll"
+
+                coverPart.$refs["cover"].style.overflow = "hidden"
+                coverPart.$refs["cover"].style.height = `${window.innerHeight}px`
+                coverPart.$refs["cover"].style.position = "fixed"
+                coverPart.$refs["cover"].style.top = "0"
                 coverPart.coverVisibility = "visible"
                 coverPart.coverOpacity = "1"
                 coverPart.coverBackColor = "rgba(0,0,0,0.5)"
-                var bodyHeight = this.body.offsetHeight
-                coverPart.coverHeight = `${bodyHeight}px`
 
                 this.searchIconDisplay = "none"
                 this.exitIconDisplay = "inline-block"
@@ -958,10 +1003,19 @@ var headerPart = new Vue({
                 this.searchBoxOpacity = "0"
                 this.searchBoxDisplay = "none"
 
+                this.body.style.position = "relative"
+                this.body.style.top = "0"
+
+                coverPart.$refs["cover"].style.overflow = "visible"
+                coverPart.$refs["cover"].style.position = "absolute"
+                coverPart.$refs["cover"].style.top = "0"
+                coverPart.$refs["cover"].style.height = "0px"
+
                 coverPart.coverVisibility = "hidden"
                 coverPart.coverOpacity = "0"
                 coverPart.coverBackColor = "transparent"
-                coverPart.coverHeight = `0px`
+
+                window.scrollBy(0, this.bodyScroll)
 
                 this.searchIconDisplay = "inline-block"
                 this.exitIconDisplay = "none"
@@ -1044,7 +1098,7 @@ var lastProduct = new Vue({
         observer_3: new Object(),
         observer_4: new Object(),
         option1: {
-            threshold: [0.7]
+            threshold: [0.06]
         },
         option2: {
             threshold: [0]
@@ -1332,7 +1386,7 @@ var popularProducts = new Vue({
         observer_3: new Object(),
         observer_4: new Object(),
         option1: {
-            threshold: [0.7]
+            threshold: [0.06]
         },
         option2: {
             threshold: [0]
@@ -1678,7 +1732,7 @@ var footer = new Vue({
         observer_1: new Object,
         observer_2: new Object,
         option1: {
-            threshold: [0.7]
+            threshold: [0.06]
         },
         option2: {
             threshold: [0]
@@ -1693,7 +1747,6 @@ var footer = new Vue({
                 if (!entry[0].isIntersecting) return
                 if (entry[0].target.children[0].style.opacity == "1") return
 
-                // console.log("entry1")
                 entry[0].target.children[0].style.opacity = "1"
                 entry[0].target.children[0].style.top = "0"
 
@@ -1703,8 +1756,6 @@ var footer = new Vue({
 
                 if (!entry[0].isIntersecting) return
                 if (firstTarget.style.opacity == "1" || secondTarget.style.opacity == "1") return
-
-                // console.log("entry2")
 
                 setTimeout(() => {
                     firstTarget.style.opacity = "1"
@@ -1721,7 +1772,6 @@ var footer = new Vue({
                 if (!entry[0].isIntersecting) return
                 if (entry[0].target.children[0].style.opacity == "1") return
 
-                // console.log("entry4")
                 setTimeout(() => {
                     entry[0].target.children[0].style.opacity = "1"
                     entry[0].target.children[0].style.top = "0"
@@ -1750,13 +1800,11 @@ var footer = new Vue({
 
 
         this.observer_2 = new IntersectionObserver((entry) => {
-            // console.log(entry)
             if (entry.length == 1) {
                 if (entry[0].isIntersecting) return
                 if (entry[0].boundingClientRect.top < 0) return
                 if (entry[0].target.children[0].style.opacity == "0") return
 
-                console.log(entry[0])
                 entry[0].target.children[0].style.opacity = "0"
                 entry[0].target.children[0].style.top = "55%"
 
@@ -1767,8 +1815,6 @@ var footer = new Vue({
                 if (entry[0].isIntersecting) return
                 if (entry[0].boundingClientRect.top < 0) return
                 if (firstTarget.style.opacity == "0") return
-
-                console.log("entry2")
 
                 firstTarget.style.opacity = "0"
                 firstTarget.style.top = "55%"
@@ -1782,8 +1828,6 @@ var footer = new Vue({
                 if (entry[0].isIntersecting) return
                 if (entry[0].boundingClientRect.top < 0) return
                 if (entry[0].target.children[0].style.opacity == "0") return
-
-                console.log("entry4")
 
                 entry[0].target.children[0].style.opacity = "0"
                 entry[0].target.children[0].style.top = "55%"

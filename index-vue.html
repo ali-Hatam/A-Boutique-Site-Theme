@@ -12,17 +12,19 @@
 </head>
 
 <body>
-    <div class="cover"
-        :style="{backgroundColor: coverBackColor, visibility: coverVisibility, opacity: coverOpacity, height: coverHeight}">
+    <div class="cover" :ref="'cover'"
+        :style="{backgroundColor: coverBackColor, visibility: coverVisibility, opacity: coverOpacity, height: coverHeight, overflow: coverOverflow}">
     </div>
 
-    <div class="header-title">
-        <p class="header-parag">فروشگاه مجازی بوتیک من | پوشاک مردانه</p>
-    </div>
+
 
     <div class="header-section">
 
-        <div class="header-menu">
+        <div class="header-title" :ref="'headerTitle'">
+            <p class="header-parag">فروشگاه مجازی بوتیک من | پوشاک مردانه</p>
+        </div>
+
+        <div class="header-menu" :ref="'headerMenu'">
             <div class="menu-container">
                 <div class="menu-container-item">
                     <div v-for="(item, index) in menuItems" :key="item.id" class="menu-right-item">
@@ -162,7 +164,7 @@
     </div>
 
     <div class="index-body">
-        <div class="slider" :style="{height: `${0.41*body.clientWidth}px`}">
+        <div class="slider" :style="{height: `${0.41*body.clientWidth}px`}" :ref="'slider'">
             <img v-for="item in imageProperty" :src="item.src"
                 :style="{zIndex:item.elementZIndex, transform:item.elementTransform, top:item.elementTop, right:item.elementRight}" />
             <figcaption>
