@@ -637,6 +637,10 @@ hr {
   /* perspective: 3500px; */
 }
 
+.sliderIndex {
+  height: 550px;
+}
+
 .slider img {
   width: 7.41%;
   position: absolute;
